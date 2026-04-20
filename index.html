@@ -491,6 +491,34 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
 .logo-marquee::before { left:0; background:linear-gradient(90deg, var(--bg-light), transparent); }
 .logo-marquee::after { right:0; background:linear-gradient(90deg, transparent, var(--bg-light)); }
 
+/* Screens carousel */
+.screens-carousel { overflow:hidden; position:relative; padding:40px 0; }
+.screens-carousel::before, .screens-carousel::after {
+ content:''; position:absolute; top:0; bottom:0; width:120px; z-index:2; pointer-events:none;
+}
+.screens-carousel::before { left:0; background:linear-gradient(90deg, var(--bg-light), transparent); }
+.screens-carousel::after { right:0; background:linear-gradient(90deg, transparent, var(--bg-light)); }
+.screens-track {
+ display:flex; gap:48px; width:max-content;
+ animation:screens-scroll 60s linear infinite;
+}
+.screens-carousel:hover .screens-track { animation-play-state:paused; }
+.screens-slide { flex:0 0 auto; width:clamp(520px, 60vw, 760px); }
+.screens-slide-label {
+ display:block; text-align:center; margin-bottom:12px;
+ font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase;
+ font-weight:700; color:var(--accent);
+}
+.screens-slide img {
+ width:100%; display:block; border-radius:14px;
+ box-shadow:0 24px 60px rgba(0,0,0,0.12);
+ border:1px solid rgba(0,0,0,0.04); background:#fff;
+}
+@keyframes screens-scroll {
+ 0%   { transform:translateX(0); }
+ 100% { transform:translateX(calc(-50% - 24px)); }
+}
+
 .grid-pattern {
  position:absolute; inset:0; z-index:0;
  background-image:
@@ -581,7 +609,6 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
  <img src="arcane-logo.png" alt="Arcane Charging Network" style="height:72px; width:auto; max-width:90vw;">
 
  </div>
- <div class="badge reveal reveal-delay-1" style="margin-bottom:24px;">The Arcane Charging Network</div>
  <h1 class="reveal reveal-delay-2" style="margin-bottom:20px;">
  One Platform.<br>
  <span class="gradient-text">Every Charger.</span>
@@ -728,7 +755,7 @@ const trustedLogos = [
  <div style="text-align:center; margin-bottom:60px;">
  <div class="badge badge-accent reveal" style="margin-bottom:16px;">The Arcane Offer</div>
  <h2 class="reveal reveal-delay-1">The Arcane Platform</h2>
- <p class="reveal reveal-delay-2" style="max-width:640px; margin:16px auto 0;">Three products built to work together. ArcaneCharge runs your chargers, ArcaneOne runs your business, and ArcaneOps runs your engineers. One login, one source of data, one brand.</p>
+ <p class="reveal reveal-delay-2" style="max-width:660px; margin:16px auto 0;">Two products to license, one operations service to keep it all running. ArcaneCharge runs your chargers, ArcaneOne runs your business, and our own operations team keeps every site healthy with ArcaneOps behind them.</p>
  <div class="reveal reveal-delay-3" style="margin-top:32px;">
  <div class="photo-panel" style="max-width:860px; margin:0 auto; height:240px;">
  <img src="https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1200&q=85&auto=format&fit=crop" alt="Row of public EV chargers at a live charging site, monitored by the Arcane CPMS platform" loading="lazy" style="object-fit:cover; object-position:center;">
@@ -785,24 +812,24 @@ const trustedLogos = [
  <svg width="32" height="32" fill="none" stroke="#1B5E3A" stroke-width="2" stroke-linecap="round"><path d="M6 26l6-8 4 4 6-8"/><circle cx="26" cy="10" r="3"/><rect x="4" y="4" width="24" height="24" rx="3"/></svg>
  </div>
  <h3 style="margin-bottom:8px;">ArcaneOps</h3>
- <p style="font-size:0.9rem;"><strong>The field service platform that keeps chargers online.</strong> Faults are caught, triaged and dispatched to an engineer before a driver notices, with a full audit trail on every job.</p>
+ <p style="font-size:0.9rem;"><strong>Provided as part of the service.</strong> This is how we keep your chargers online. Our own operations team runs ArcaneOps behind the scenes, catching faults from ArcaneCharge data and dispatching an Arcane engineer before a driver notices.</p>
  <div class="expand-hint">
  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3v8M3 7l4 4 4-4"/></svg>
  Click to expand
  </div>
  <ul class="eco-features">
- <li>Assign and track field engineers in real time</li>
- <li>Preventative maintenance scheduling on every site</li>
- <li>Predictive downtime alerts driven by live charger data</li>
- <li>Support ticket escalation with a full audit trail</li>
- <li>Job tracking with site photos, notes and sign off</li>
+ <li>Live faults from ArcaneCharge feed straight into ArcaneOps</li>
+ <li>Preventative maintenance scheduled site by site</li>
+ <li>Predictive downtime alerts from real charger data</li>
+ <li>Support tickets triaged and escalated with a full audit trail</li>
+ <li>Job sign off with site photos, notes and time stamps</li>
  <li>AI driven scheduling and route optimisation</li>
  </ul>
  </div>
  </div>
  </div>
  <p class="reveal" style="text-align:center; margin-top:48px; font-size:1.1rem; font-weight:500; color:var(--text-dark);">
- Three products. <span class="gradient-text">One joined up platform.</span>
+ Two products you license. <span class="gradient-text">One operations team running behind them.</span>
  </p>
  </div>
 </section>
@@ -866,33 +893,84 @@ const trustedLogos = [
 </section>
 
 <!-- ==================== INSIDE THE PLATFORM ==================== -->
-<section id="sec-whitelabel" style="background:var(--bg-light); padding:96px 5vw;">
- <div class="section-inner" style="position:relative;z-index:1;">
- <div class="reveal" style="text-align:center; margin-bottom:48px;">
+<section id="sec-whitelabel" style="background:var(--bg-light); padding:96px 0;">
+ <div class="section-inner" style="position:relative;z-index:1; padding:0 5vw;">
+ <div class="reveal" style="text-align:center; margin-bottom:24px;">
  <span class="badge badge-accent">INSIDE THE ARCANE PLATFORM</span>
  <h2 style="margin-top:12px;">A Closer Look At The Product</h2>
- <p style="font-size:1rem; max-width:680px; margin:12px auto 0; color:var(--text-secondary);">Every module runs from the same data and the same login. These are the real screens your team uses every day.</p>
+ <p style="font-size:1rem; max-width:680px; margin:12px auto 0; color:var(--text-secondary);">Every module runs from the same data and the same login. Hover to pause, scroll for more.</p>
+ </div>
  </div>
 
- <!-- Customers, full width -->
- <div class="reveal" style="max-width:1240px; margin:0 auto 72px;">
- <p style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:12px; text-align:center; font-weight:600;">Customer records</p>
- <img src="screenshots/customers.png" alt="Arcane customer record view showing dealer accounts, contact details, tenant information and account management controls" loading="lazy" style="width:100%; display:block; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.10);">
- <p style="text-align:center; margin-top:16px; font-size:0.95rem; color:var(--text-secondary); max-width:620px; margin-left:auto; margin-right:auto;">Every dealer, fleet and site in one place. Search, filter and open a full history in a click, with role based access for the whole team.</p>
+ <div class="screens-carousel reveal">
+ <div class="screens-track" aria-label="Arcane platform screens">
+ <!-- Slide set A -->
+ <div class="screens-slide">
+ <span class="screens-slide-label">Customer records</span>
+ <img src="screenshots/customers.png" alt="Arcane customer record view with dealer accounts, contact details and tenant information" loading="lazy">
+ </div>
+ <div class="screens-slide">
+ <span class="screens-slide-label">Asset management</span>
+ <img src="screenshots/assets.png" alt="Arcane asset management view with sites, batteries and inverters and a detail panel" loading="lazy">
+ </div>
+ <div class="screens-slide">
+ <span class="screens-slide-label">Live charging sessions</span>
+ <img src="screenshots/live-sessions.png" alt="ArcaneCharge live charging sessions with charger ID, site, driver, power and energy" loading="lazy">
+ </div>
+ <div class="screens-slide">
+ <span class="screens-slide-label">Jobs management</span>
+ <img src="screenshots/jobs.png" alt="Arcane jobs list with reactive callouts and site surveys" loading="lazy">
+ </div>
+ <div class="screens-slide">
+ <span class="screens-slide-label">Job type library</span>
+ <img src="screenshots/job-types.png" alt="Arcane job type library covering warranty replacements, reactive callouts, services, installations and site surveys" loading="lazy">
+ </div>
+ <div class="screens-slide">
+ <span class="screens-slide-label">Engineer directory</span>
+ <img src="screenshots/engineers.png" alt="Arcane engineer directory with region, skills, jobs today and status" loading="lazy">
+ </div>
+ <div class="screens-slide">
+ <span class="screens-slide-label">Invoices</span>
+ <img src="screenshots/invoices.png" alt="ArcaneOne invoices with customer, amount, due date and status" loading="lazy">
+ </div>
+ <div class="screens-slide">
+ <span class="screens-slide-label">Agent directory</span>
+ <img src="screenshots/agents.png" alt="Arcane agent directory listing internal users with their ID, name, email and active status" loading="lazy">
  </div>
 
- <!-- Agent directory, full width -->
- <div class="reveal" style="max-width:1240px; margin:0 auto 72px;">
- <p style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:12px; text-align:center; font-weight:600;">Agent directory</p>
- <img src="screenshots/agents.png" alt="Arcane agent directory listing internal users with agent ID, name, email and active status" loading="lazy" style="width:100%; display:block; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.08); border:1px solid rgba(0,0,0,0.04);">
- <p style="text-align:center; margin-top:16px; font-size:0.95rem; color:var(--text-secondary); max-width:620px; margin-left:auto; margin-right:auto;">Manage every internal user with a full audit trail of who did what, when.</p>
+ <!-- Slide set B (duplicate for seamless loop) -->
+ <div class="screens-slide" aria-hidden="true">
+ <span class="screens-slide-label">Customer records</span>
+ <img src="screenshots/customers.png" alt="" loading="lazy">
  </div>
-
- <!-- Job type library, full width -->
- <div class="reveal" style="max-width:1240px; margin:0 auto;">
- <p style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:12px; text-align:center; font-weight:600;">Job type library</p>
- <img src="screenshots/job-types.png" alt="Arcane job type library covering warranty replacements, reactive callouts, annual services, installations and site surveys" loading="lazy" style="width:100%; display:block; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.08); border:1px solid rgba(0,0,0,0.04);">
- <p style="text-align:center; margin-top:16px; font-size:0.95rem; color:var(--text-secondary); max-width:620px; margin-left:auto; margin-right:auto;">Reusable job templates with their own priority and status profiles. Configure once, apply across every site.</p>
+ <div class="screens-slide" aria-hidden="true">
+ <span class="screens-slide-label">Asset management</span>
+ <img src="screenshots/assets.png" alt="" loading="lazy">
+ </div>
+ <div class="screens-slide" aria-hidden="true">
+ <span class="screens-slide-label">Live charging sessions</span>
+ <img src="screenshots/live-sessions.png" alt="" loading="lazy">
+ </div>
+ <div class="screens-slide" aria-hidden="true">
+ <span class="screens-slide-label">Jobs management</span>
+ <img src="screenshots/jobs.png" alt="" loading="lazy">
+ </div>
+ <div class="screens-slide" aria-hidden="true">
+ <span class="screens-slide-label">Job type library</span>
+ <img src="screenshots/job-types.png" alt="" loading="lazy">
+ </div>
+ <div class="screens-slide" aria-hidden="true">
+ <span class="screens-slide-label">Engineer directory</span>
+ <img src="screenshots/engineers.png" alt="" loading="lazy">
+ </div>
+ <div class="screens-slide" aria-hidden="true">
+ <span class="screens-slide-label">Invoices</span>
+ <img src="screenshots/invoices.png" alt="" loading="lazy">
+ </div>
+ <div class="screens-slide" aria-hidden="true">
+ <span class="screens-slide-label">Agent directory</span>
+ <img src="screenshots/agents.png" alt="" loading="lazy">
+ </div>
  </div>
  </div>
 </section>
@@ -957,9 +1035,9 @@ const trustedLogos = [
  <div class="particle" style="width:5px; height:5px; background:rgba(34,122,74,0.2); bottom:12%; right:6%; --dur:19s; --delay:0s;"></div>
  <div class="section-inner" style="position:relative;z-index:1;">
  <div class="badge reveal" style="margin-bottom:16px;">ArcaneOps</div>
- <h2 class="reveal reveal-delay-1" style="margin-bottom:8px;">Field Service, Built In.</h2>
- <p class="reveal reveal-delay-2" style="font-size:1.1rem; margin-bottom:24px; max-width:680px;">
- ArcaneOps turns live charger data into work. A fault raised by ArcaneCharge becomes a ticket in ArcaneOps, a ticket becomes a job, and a job ends with a signed off report. No swivel chairing between systems, no lost tickets, no surprise callouts.
+ <h2 class="reveal reveal-delay-1" style="margin-bottom:8px;">How We Keep Your Chargers Online.</h2>
+ <p class="reveal reveal-delay-2" style="font-size:1.1rem; margin-bottom:24px; max-width:700px;">
+ ArcaneOps is not a product you license. It is the operations platform our own engineers use to keep every charger on your network running. A fault in ArcaneCharge becomes a ticket in ArcaneOps, a ticket becomes a job and a job ends with a signed off report, all without you lifting a finger.
  </p>
  <div class="reveal reveal-delay-3" style="margin-bottom:40px;">
  <div class="photo-panel" style="max-width:100%; height:200px;">
@@ -1253,7 +1331,7 @@ const trustedLogos = [
  <div class="card-icon" style="margin:0 auto 16px;"><svg width="24" height="24" fill="none" stroke="#227A4A" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="M8 7h8M8 11h5"/></svg></div>
  <h4>Full Ecosystem</h4>
  <p style="font-size:2rem; font-weight:800; color:var(--primary-blue); margin:12px 0 4px;">Bundled</p>
- <p style="font-size:0.9rem;">ArcaneCharge + ArcaneOne + ArcaneOps in a single integrated licence. The best value for CPOs who want everything.</p>
+ <p style="font-size:0.9rem;">ArcaneCharge and ArcaneOne in a single integrated licence, with ArcaneOps operations support included. The best value for operators who want everything in one place.</p>
  </div>
  <div class="card" style="text-align:center;">
  <div class="card-icon" style="margin:0 auto 16px; background:var(--light-purple);"><svg width="24" height="24" fill="none" stroke="#1B5E3A" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
