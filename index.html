@@ -549,15 +549,16 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
   <button class="nav-dot" data-section="2"><span class="tooltip">The Problem</span></button>
   <button class="nav-dot" data-section="3"><span class="tooltip">Ecosystem</span></button>
   <button class="nav-dot" data-section="4"><span class="tooltip">ArcaneCharge</span></button>
-  <button class="nav-dot" data-section="5"><span class="tooltip">ArcaneOne</span></button>
-  <button class="nav-dot" data-section="6"><span class="tooltip">ArcaneOps</span></button>
-  <button class="nav-dot" data-section="7"><span class="tooltip">Integration</span></button>
-  <button class="nav-dot" data-section="8"><span class="tooltip">Results</span></button>
-  <button class="nav-dot" data-section="9"><span class="tooltip">Testimonials</span></button>
-  <button class="nav-dot" data-section="10"><span class="tooltip">Energy</span></button>
-  <button class="nav-dot" data-section="11"><span class="tooltip">Pricing</span></button>
-  <button class="nav-dot" data-section="12"><span class="tooltip">About</span></button>
-  <button class="nav-dot" data-section="13"><span class="tooltip">Contact</span></button>
+  <button class="nav-dot" data-section="5"><span class="tooltip">White Label</span></button>
+  <button class="nav-dot" data-section="6"><span class="tooltip">ArcaneOne</span></button>
+  <button class="nav-dot" data-section="7"><span class="tooltip">ArcaneOps</span></button>
+  <button class="nav-dot" data-section="8"><span class="tooltip">Integration</span></button>
+  <button class="nav-dot" data-section="9"><span class="tooltip">Results</span></button>
+  <button class="nav-dot" data-section="10"><span class="tooltip">Testimonials</span></button>
+  <button class="nav-dot" data-section="11"><span class="tooltip">Energy</span></button>
+  <button class="nav-dot" data-section="12"><span class="tooltip">Pricing</span></button>
+  <button class="nav-dot" data-section="13"><span class="tooltip">About</span></button>
+  <button class="nav-dot" data-section="14"><span class="tooltip">Contact</span></button>
 </nav>
 
 <!-- ==================== HERO ==================== -->
@@ -595,10 +596,12 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
       </a>
       <a href="#sec-contact" class="btn btn-secondary animated-border" style="border-radius:12px;">Book a Demo</a>
     </div>
-    <!-- Hero image showcase -->
+    <!-- Hero video showcase -->
     <div class="reveal reveal-delay-4" style="margin-top:48px;">
-      <div class="photo-panel" style="max-width:900px; margin:0 auto; height:380px;">
-        <img src="https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1400&q=85&auto=format" alt="Unbranded EV charging site with multiple charge points installed" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;">
+      <div class="photo-panel" style="max-width:900px; margin:0 auto; height:380px; overflow:hidden;">
+        <video autoplay muted loop playsinline preload="auto" poster="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1400&q=80&auto=format" alt="Large scale EV charging hub with rows of chargers" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;">
+          <source src="https://videos.pexels.com/video-files/9788713/9788713-hd_1280_720_30fps.mp4" type="video/mp4">
+        </video>
         <div class="overlay-gradient"></div>
         <div style="position:absolute; bottom:24px; left:32px; color:#fff; text-align:left; z-index:1;">
           <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8; margin-bottom:4px;">Trusted by leading CPOs and fleet operators</p>
@@ -864,6 +867,46 @@ const trustedLogos = [
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHITE LABEL IN ACTION ==================== -->
+<section id="sec-whitelabel" style="min-height:80vh; background:var(--bg-light);">
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div class="reveal" style="margin-top:56px;">
+      <div style="text-align:center; margin-bottom:24px;">
+        <span class="badge badge-accent">WHITE LABEL IN ACTION</span>
+        <h3 style="margin-top:12px;">How It Looks With Your Brand</h3>
+        <p style="font-size:0.95rem; max-width:560px; margin:8px auto 0;">Every element carries your identity. Here is how ArcaneCharge looks when white labelled for your organisation. Your clients get a premium branded platform at a fraction of the cost of going direct to the larger providers, fully integrated with your existing maintenance and operations workflow.</p>
+      </div>
+      <div class="grid-2" style="gap:24px;">
+        <div>
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:8px; text-align:center;">Default Arcane Platform</p>
+          <div class="mockup-frame">
+            <div class="mockup-titlebar">
+              <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
+              <span style="font-size:0.75rem; color:var(--text-muted); margin-left:8px;">cms.arcanechargingnetwork.com</span>
+            </div>
+            <div class="mockup-content" style="padding:0; min-height:auto;">
+              <img src="https://iili.io/Br92zH7.jpg" alt="Arcane CPMS Dashboard showing real time charging session monitoring, device status and revenue tracking" loading="lazy" style="width:100%; display:block; border-radius:0 0 10px 10px;">
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:8px; text-align:center;">White Labelled for Your Brand</p>
+          <div class="mockup-frame" style="border-color:rgba(46,125,125,0.3);">
+            <div class="mockup-titlebar" style="background:rgba(46,125,125,0.06);">
+              <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
+              <span style="font-size:0.75rem; color:var(--text-muted); margin-left:8px;">charging.yourclientbrand.com</span>
+            </div>
+            <div class="mockup-content" style="padding:0; min-height:auto;">
+              <img src="https://iili.io/Br92ysj.jpg" alt="White labelled CPMS Dashboard with your brand colours, same functionality under your own domain" loading="lazy" style="width:100%; display:block; border-radius:0 0 10px 10px;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:20px; font-size:0.85rem; color:var(--text-muted);">Same powerful platform. Completely your brand. Your colours, your domain, your driver app.</p>
     </div>
   </div>
 </section>
