@@ -535,8 +535,8 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
 }
 
 @media (max-width:900px) {
- .grid-3 { grid-template-columns:1fr !important; }
- .grid-2 { grid-template-columns:1fr !important; gap:24px !important; }
+ .grid-3 { grid-template-columns:1fr !important; gap:16px !important; }
+ .grid-2 { grid-template-columns:1fr !important; gap:20px !important; }
  .ecosystem-row { flex-direction:column; align-items:center; }
  .ecosystem-connector { display:none; }
  .nav-dots { display:none; }
@@ -548,34 +548,47 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
  .energy-arrow { transform:rotate(90deg); }
  .mockup-stat-grid { grid-template-columns:1fr !important; }
  .section-inner { padding:0 !important; }
- .screens-slide { width:clamp(300px, 86vw, 520px); }
+ .screens-slide { width:clamp(280px, 86vw, 480px); }
  .screens-track { gap:24px; }
  .screens-carousel::before, .screens-carousel::after { width:40px; }
+ h1 br, h2 br { display:none; }
+ #trusted-logos { gap:16px !important; }
+ #trusted-logos img { height:28px !important; }
 }
 @media (max-width:600px) {
- h1 { font-size:2rem; }
- h2 { font-size:1.6rem; }
+ html, body { overflow-x:hidden; }
+ h1 { font-size:1.85rem; }
+ h2 { font-size:1.45rem; }
  h3 { font-size:1.1rem; }
+ h4 { font-size:1rem; }
  p { font-size:0.95rem; }
  .btn { padding:12px 24px; font-size:0.9rem; }
  .stat-value { font-size:2rem; }
- section { padding:48px 16px !important; }
- .card { padding:24px !important; }
- .mockup-content { padding:12px !important; }
- .mockup-titlebar { padding:10px 12px !important; }
- .mockup-titlebar span { font-size:0.65rem !important; }
- .ecosystem-card { max-width:100% !important; padding:24px !important; }
+ section { padding:44px 14px !important; }
+ .section-inner { padding:0 !important; max-width:100%; }
+ .card { padding:20px !important; }
+ .mockup-frame { border-radius:10px !important; }
+ .mockup-content { padding:10px !important; }
+ .mockup-titlebar { padding:8px 10px !important; }
+ .mockup-titlebar span { font-size:0.6rem !important; word-break:break-all; }
+ .ecosystem-card { max-width:100% !important; padding:20px !important; }
  .mockup-row { padding:8px 10px !important; gap:8px !important; }
  .mockup-row-text { font-size:0.72rem !important; }
  .mockup-row-badge { font-size:0.6rem !important; }
- .photo-panel { height:200px !important; }
- img[src="arcane-logo.png"] { height:52px !important; }
+ .photo-panel { height:180px !important; }
+ img[src="arcane-logo.png"] { height:44px !important; }
  .screens-slide { width:86vw; }
- .workflow-step { gap:14px; padding:14px 0; }
- .workflow-num { width:36px !important; height:36px !important; border-radius:10px !important; font-size:0.85rem !important; }
- .workflow-line { left:17px !important; top:50px !important; }
- .case-study { padding:20px !important; }
+ .workflow-step { gap:12px; padding:14px 0; }
+ .workflow-num { width:32px !important; height:32px !important; border-radius:8px !important; font-size:0.8rem !important; }
+ .workflow-line { left:15px !important; top:48px !important; }
+ .case-study { padding:18px !important; }
  .progress-ring-container { width:120px; height:120px; }
+ /* Keep the eight pricing number readable at phone width */
+ #sec-pricing .card p[style*="font-size:2.6rem"] { font-size:2rem !important; }
+ /* Reference table does not try to horizontally scroll a tiny table */
+ #sec-pricing table.comparison-table { min-width:0; }
+ #trusted-logos { gap:12px !important; }
+ #trusted-logos img { height:24px !important; }
 }
 </style>
 </head>
@@ -652,10 +665,6 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
  <video autoplay muted loop playsinline preload="auto" poster="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1400&q=80&auto=format" alt="Large scale EV charging hub with rows of chargers" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;">
  <source src="https://videos.pexels.com/video-files/9788713/9788713-hd_1280_720_30fps.mp4" type="video/mp4">
  </video>
- <div class="overlay-gradient"></div>
- <div style="position:absolute; bottom:24px; left:32px; color:#fff; text-align:left; z-index:1;">
- <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8; margin-bottom:4px;">Trusted by leading CPOs and fleet operators</p>
- </div>
  </div>
  </div>
  </div>
@@ -697,14 +706,14 @@ const trustedLogos = [
 (function buildTrustedLogos() {
  const container = document.getElementById('trusted-logos');
  trustedLogos.forEach(function(item) {
- const cardStyle = 'padding:16px 28px; border:1px solid var(--border-card); border-radius:12px; background:var(--bg-white); box-shadow:var(--card-shadow); transition:all 0.3s; display:flex; align-items:center;';
+ const cardStyle = 'padding:8px 20px; background:transparent; display:flex; align-items:center; justify-content:center; min-height:48px;';
+ const imgStyle = 'height:36px; max-width:160px; width:auto; object-fit:contain; filter:grayscale(100%) contrast(0.85); opacity:0.55; mix-blend-mode:multiply; transition:all 0.3s ease;';
  let inner = '';
  if (item.logo) {
- inner = '<img src="' + item.logo + '" alt="' + item.name + '" style="height:36px; width:auto;">';
+ inner = '<img src="' + item.logo + '" alt="' + item.name + '" style="' + imgStyle + '">';
  } else {
- const colour = item.name === 'KEBA' ? '#00843D' : 'var(--text-dark)';
  const weight = item.name === 'KEBA' ? '700' : '600';
- inner = '<span style="font-size:1rem; font-weight:' + weight + '; color:' + colour + '; letter-spacing:0.02em;">' + item.name + '</span>';
+ inner = '<span style="font-size:1rem; font-weight:' + weight + '; color:var(--text-muted); letter-spacing:0.04em; opacity:0.75; transition:all 0.3s ease;">' + item.name + '</span>';
  }
  let el;
  if (item.url) {
@@ -713,8 +722,16 @@ const trustedLogos = [
  el.target = '_blank';
  el.rel = 'noopener';
  el.style.cssText = 'text-decoration:none; transition:all 0.3s;';
- el.onmouseover = function() { this.style.transform = 'translateY(-3px)'; };
- el.onmouseout = function() { this.style.transform = 'translateY(0)'; };
+ el.onmouseover = function() {
+ const inner = this.querySelector('img, span');
+ if (inner && inner.tagName === 'IMG') { inner.style.filter = 'grayscale(0%) contrast(1)'; inner.style.opacity = '1'; }
+ if (inner && inner.tagName === 'SPAN') { inner.style.color = 'var(--text-dark)'; inner.style.opacity = '1'; }
+ };
+ el.onmouseout = function() {
+ const inner = this.querySelector('img, span');
+ if (inner && inner.tagName === 'IMG') { inner.style.filter = 'grayscale(100%) contrast(0.85)'; inner.style.opacity = '0.55'; }
+ if (inner && inner.tagName === 'SPAN') { inner.style.color = 'var(--text-muted)'; inner.style.opacity = '0.75'; }
+ };
  } else {
  el = document.createElement('div');
  }
@@ -738,7 +755,6 @@ const trustedLogos = [
  <div class="reveal reveal-delay-3" style="margin-top:32px;">
  <div class="photo-panel" style="max-width:800px; margin:0 auto; height:260px;">
  <img src="https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1200&q=85&auto=format&fit=crop" alt="Public EV charging site with rows of charge points, monitored centrally" loading="lazy" style="object-fit:cover; object-position:center;">
- <div class="overlay-gradient"></div>
  </div>
  </div>
  </div>
@@ -1045,10 +1061,6 @@ const trustedLogos = [
  <div class="reveal reveal-delay-3" style="margin-bottom:40px;">
  <div class="photo-panel" style="max-width:100%; height:200px;">
  <img src="https://images.unsplash.com/photo-1615829386703-e2bb66a7cb7d?w=1200&q=85&auto=format&fit=crop" alt="Arcane field engineer servicing a charge point on site, keeping the network healthy" loading="lazy" style="object-fit:cover; object-position:center;">
- <div class="overlay-gradient"></div>
- <div style="position:absolute; bottom:18px; left:24px; color:#fff; z-index:1;">
- <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">Keep every charger running with intelligent field service management</p>
- </div>
  </div>
  </div>
  <div class="grid-2" style="margin-bottom:40px;">
@@ -1112,10 +1124,6 @@ const trustedLogos = [
  <div class="reveal reveal-delay-2" style="margin-top:28px;">
  <div class="photo-panel" style="max-width:780px; margin:0 auto; height:220px;">
  <img src="https://images.unsplash.com/photo-1616361715039-11dde2199a21?w=1200&q=85&auto=format&fit=crop" alt="Smart EV charging hub showing how CPMS, field service and business systems work as one operation" loading="lazy" style="object-fit:cover; object-position:center;">
- <div class="overlay-gradient"></div>
- <div style="position:absolute; bottom:18px; left:24px; color:#fff; z-index:1;">
- <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">From fault detection to fix in minutes, not days</p>
- </div>
  </div>
  </div>
  </div>
@@ -1187,7 +1195,7 @@ const trustedLogos = [
  <span class="progress-ring-label">Uptime</span>
  </div>
  </div>
- <h4>98.7% Target Uptime</h4>
+ <h4>99% Target Uptime</h4>
  <p style="font-size:0.9rem; margin-top:8px;">Preventative maintenance and predictive alerts keep your network running.</p>
  </div>
  <div class="stat-box">
@@ -1279,10 +1287,6 @@ const trustedLogos = [
  <div class="reveal reveal-delay-2" style="margin-top:28px;">
  <div class="photo-panel" style="max-width:820px; margin:0 auto; height:220px;">
  <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=85&auto=format&fit=crop" alt="Renewable energy site combining solar, wind, battery storage and EV chargers, the kind of smart site ArcaneCharge manages" loading="lazy" style="object-fit:cover; object-position:center;">
- <div class="overlay-gradient"></div>
- <div style="position:absolute; bottom:18px; left:24px; color:#fff; z-index:1;">
- <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">EV, solar, wind and battery storage managed as one energy ecosystem</p>
- </div>
  </div>
  </div>
  </div>
@@ -1386,10 +1390,6 @@ const trustedLogos = [
  <div class="reveal" style="margin-bottom:40px;">
  <div class="photo-panel" style="max-width:100%; height:240px;">
  <img src="https://images.unsplash.com/photo-1671785120538-c24cbe823ccc?w=1200&q=85&auto=format&fit=crop" alt="Modern EV charging infrastructure, the kind of site operators run on ArcaneCharge" loading="lazy" style="object-fit:cover; object-position:center;">
- <div class="overlay-gradient"></div>
- <div style="position:absolute; bottom:20px; left:28px; color:#fff; z-index:1;">
- <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">Powering the transition to intelligent energy management</p>
- </div>
  </div>
  </div>
  <div class="grid-2">
@@ -1471,11 +1471,9 @@ const trustedLogos = [
  <div class="reveal reveal-delay-4 img-showcase" style="margin-top:48px;">
  <div class="photo-panel" style="height:200px;">
  <img src="https://images.unsplash.com/photo-1631347826177-de288776ed3b?w=800&q=85&auto=format&fit=crop" alt="Smart EV charging station in active use, ArcaneCharge powers the session behind the scenes" loading="lazy" style="object-fit:cover; object-position:center;">
- <div class="overlay-gradient"></div>
  </div>
  <div class="photo-panel" style="height:200px;">
  <img src="https://images.unsplash.com/photo-1600490819528-42405785433a?w=800&q=85&auto=format&fit=crop" alt="Row of EV chargers at a modern public hub, operated on ArcaneCharge" loading="lazy" style="object-fit:cover; object-position:center;">
- <div class="overlay-gradient"></div>
  </div>
  </div>
  </div>
@@ -1523,7 +1521,7 @@ function animateStats() {
  ring.style.strokeDasharray = c;
  ring.style.strokeDashoffset = c;
  setTimeout(() => { ring.style.strokeDashoffset = c * (1 - 0.987); }, 200);
- animateCounter('uptimeValue', 0, 98.7, 2000, '%', 1);
+ animateCounter('uptimeValue', 0, 99, 2000, '%', 0);
  animateCounter('calloutStat', 0, 40, 2000, '%', 0);
  animateCounter('revenueStat', 0, 23, 2000, '%', 0);
 }
