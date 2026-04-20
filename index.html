@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arcane Charging Network â Intelligent EV Charging Platform</title>
+<title>Arcane Charging Network — Intelligent EV Charging Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -572,13 +572,18 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
   <div class="particle" style="width:3px; height:3px; background:rgba(27,94,58,0.3); bottom:20%; right:10%; --dur:16s; --delay:3s;"></div>
   <div class="section-inner" style="text-align:center; position:relative; z-index:1;">
     <div class="reveal" style="margin-bottom:40px; display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
-      <img src="https://arcanechargingacademy.co.uk/wp-content/uploads/2025/12/Arcane-Academy-Logo-FullColour-RGB-3000px-600x180.png" alt="Arcane Charging Network" style="height:64px; width:auto;">
+      <!--
+        Drop the Arcane Charging Network logo PNG the CEO provided into this
+        folder as arcane-logo.png. The <img> below will pick it up
+        automatically.
+      -->
+      <img src="arcane-logo.png" alt="Arcane Charging Network" style="height:72px; width:auto; max-width:90vw;">
 
     </div>
     <div class="badge reveal reveal-delay-1" style="margin-bottom:24px;">Intelligent EV Charging Platform</div>
     <h1 class="reveal reveal-delay-2" style="margin-bottom:20px;">
       One Platform. Every Charger.<br>
-      <span class="gradient-text">Zero Downtime.</span>
+      <span class="gradient-text">Maximum Uptime.</span>
     </h1>
     <p class="reveal reveal-delay-3" style="max-width:640px; margin:0 auto 40px; font-size:1.15rem;">
       The integrated charging management platform that brings your CPMS, field service and operations together. Cheaper than the big providers. More integrated than anything else on the market.
@@ -593,7 +598,7 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
     <!-- Hero image showcase -->
     <div class="reveal reveal-delay-4" style="margin-top:48px;">
       <div class="photo-panel" style="max-width:900px; margin:0 auto; height:380px;">
-        <img src="https://images.unsplash.com/photo-1641659376402-3d2f48a91ed7?w=1400&q=85&auto=format" alt="Large scale EV charging hub with rows of chargers" style="width:100%; border-radius:16px; display:block;">
+        <img src="https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1400&q=85&auto=format" alt="Unbranded EV charging site with multiple charge points installed" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;">
         <div class="overlay-gradient"></div>
         <div style="position:absolute; bottom:24px; left:32px; color:#fff; text-align:left; z-index:1;">
           <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8; margin-bottom:4px;">Trusted by leading CPOs and fleet operators</p>
@@ -839,13 +844,14 @@ const trustedLogos = [
         </div>
       </div>
       <div class="reveal reveal-delay-2">
+        <p class="reveal reveal-delay-1" style="margin:0 0 12px; font-size:0.9rem; color:var(--text-muted);">What your client sees when they sign in to their white-labelled dashboard:</p>
         <div class="mockup-frame">
           <div class="mockup-titlebar">
             <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
-            <span style="font-size:0.75rem;color:var(--text-muted);margin-left:8px;">ArcaneCharge â CPMS Dashboard</span>
+            <span style="font-size:0.75rem;color:var(--text-muted);margin-left:8px;">ArcaneCharge — CPMS Dashboard (your client's branding)</span>
           </div>
           <div class="mockup-content">
-            <div class="mockup-overlay">Screenshot Placeholder â Replace with actual platform image</div>
+            <div class="mockup-overlay">Live preview of the ArcaneCharge client dashboard (white-labelled view). Replace with a production screenshot.</div>
             <div class="mockup-stat-grid">
               <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--accent);">1,247</div><div class="mockup-stat-label">Active Sessions</div></div>
               <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--primary-blue);">98.7%</div><div class="mockup-stat-label">Network Uptime</div></div>
@@ -889,7 +895,7 @@ const trustedLogos = [
             <span style="font-size:0.75rem;color:var(--text-muted);margin-left:8px;">ArcaneOne â Company Portal</span>
           </div>
           <div class="mockup-content">
-            <div class="mockup-overlay">Screenshot Placeholder â Replace with actual platform image</div>
+            <div class="mockup-overlay">Preview of the ArcaneOne company portal. Replace with a production screenshot.</div>
             <div style="display:flex;gap:8px;margin-bottom:16px;">
               <span style="padding:6px 14px;border-radius:8px;background:var(--light-blue);color:var(--primary-blue);font-size:0.75rem;font-weight:600;">Company</span>
               <span style="padding:6px 14px;border-radius:8px;background:var(--bg-light);color:var(--text-muted);font-size:0.75rem;">Customer</span>
@@ -966,7 +972,7 @@ const trustedLogos = [
             <span style="font-size:0.75rem;color:var(--text-muted);margin-left:8px;">ArcaneOps â Field Service Dashboard</span>
           </div>
           <div class="mockup-content">
-            <div class="mockup-overlay">Screenshot Placeholder â Replace with actual platform image</div>
+            <div class="mockup-overlay">Preview of the ArcaneOps field service dashboard. Replace with a production screenshot.</div>
             <div class="mockup-stat-grid" style="grid-template-columns:repeat(2,1fr);">
               <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--accent);font-size:1.2rem;">12</div><div class="mockup-stat-label">Engineers Active</div></div>
               <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--primary-blue);font-size:1.2rem;">8</div><div class="mockup-stat-label">Jobs In Progress</div></div>
@@ -1299,7 +1305,7 @@ const trustedLogos = [
   <div class="particle" style="width:6px; height:6px; background:rgba(34,122,74,0.12); top:20%; left:8%; --dur:22s; --delay:0s;"></div>
   <div class="section-inner" style="position:relative;z-index:1; text-align:center;">
     <div class="reveal" style="display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
-      <img src="https://arcanechargingacademy.co.uk/wp-content/uploads/2025/12/Arcane-Academy-Logo-FullColour-RGB-3000px-600x180.png" alt="Arcane Charging Network" style="height:48px; width:auto; margin-bottom:32px;">
+      <img src="arcane-logo.png" alt="Arcane Charging Network" style="height:56px; width:auto; max-width:90vw; margin-bottom:32px;">
 
     </div>
     <h2 class="reveal reveal-delay-1" style="margin-bottom:16px;">Ready to See It in Action?</h2>
@@ -1344,7 +1350,7 @@ const trustedLogos = [
 </section>
 
 <footer>
-  <p>ARCANE Charging Network &nbsp;|&nbsp; Intelligent EV Charging Platform</p>
+  <p>ARCANE CHARGING NETWORK &nbsp;|&nbsp; Intelligent EV Charging Platform</p>
   <p style="margin-top:8px; font-size:0.75rem;">&copy; 2026 Arcane Charging Network. All rights reserved.</p>
 </footer>
 
