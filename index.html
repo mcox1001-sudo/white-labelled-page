@@ -190,30 +190,6 @@ p { color:var(--text-body); font-size:1.05rem; }
 .mockup-row-text { font-size:0.8rem; color:var(--text-secondary); flex:1; }
 .mockup-row-badge { font-size:0.65rem; padding:2px 8px; border-radius:100px; font-weight:600; }
 
-.video-placeholder {
- background:var(--bg-light); border:1px solid var(--border-card);
- border-radius:16px; aspect-ratio:16/9; display:flex;
- align-items:center; justify-content:center; flex-direction:column;
- gap:16px; cursor:pointer; transition:all 0.3s; position:relative; overflow:hidden;
-}
-.video-placeholder::before {
- content:''; position:absolute; inset:0;
- background:radial-gradient(ellipse at center, rgba(34,122,74,0.06) 0%, transparent 70%);
-}
-.video-placeholder:hover { border-color:var(--primary-blue); box-shadow:0 8px 30px rgba(34,122,74,0.15); }
-.play-btn {
- width:72px; height:72px; border-radius:50%; border:2px solid var(--primary-blue);
- display:flex; align-items:center; justify-content:center;
- background:rgba(34,122,74,0.1); backdrop-filter:blur(10px);
- transition:all 0.3s; z-index:1;
-}
-.play-btn::after {
- content:''; width:0; height:0;
- border-left:20px solid var(--primary-blue); border-top:12px solid transparent;
- border-bottom:12px solid transparent; margin-left:4px;
-}
-.video-placeholder:hover .play-btn { background:rgba(34,122,74,0.2); transform:scale(1.08); }
-.video-label { font-size:0.85rem; color:var(--text-muted); z-index:1; }
 
 .comparison-table {
  width:100%; border-collapse:separate; border-spacing:0;
@@ -231,8 +207,8 @@ p { color:var(--text-body); font-size:1.05rem; }
 .cross { color:#EF4444; }
 .arcane-col { background:rgba(34,122,74,0.03) !important; }
 
-.progress-ring-container { position:relative; width:160px; height:160px; margin:0 auto 16px; }
-.progress-ring { transform:rotate(-90deg); }
+.progress-ring-container { position:relative; width:160px; height:160px; margin:0 auto 16px; max-width:100%; aspect-ratio:1/1; }
+.progress-ring { transform:rotate(-90deg); width:100%; height:100%; display:block; }
 .progress-ring-bg { fill:none; stroke:var(--border-light); stroke-width:8; }
 .progress-ring-fill {
  fill:none; stroke:url(#ring-gradient); stroke-width:8;
@@ -426,11 +402,6 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
  transition:transform 0.6s ease;
 }
 .photo-panel:hover img { transform:scale(1.05); }
-.photo-panel .overlay-gradient {
- position:absolute; inset:0;
- background:linear-gradient(180deg, transparent 40%, rgba(26,26,46,0.7) 100%);
-}
-
 /* Floating particles */
 .particle {
  position:absolute; border-radius:50%; pointer-events:none; z-index:0;
@@ -582,13 +553,20 @@ footer p { font-size:0.85rem; color:var(--text-muted); }
  .workflow-num { width:32px !important; height:32px !important; border-radius:8px !important; font-size:0.8rem !important; }
  .workflow-line { left:15px !important; top:48px !important; }
  .case-study { padding:18px !important; }
- .progress-ring-container { width:120px; height:120px; }
+ .progress-ring-container { width:140px; height:140px; }
+ .progress-ring-value { font-size:1.6rem !important; }
  /* Keep the eight pricing number readable at phone width */
  #sec-pricing .card p[style*="font-size:2.6rem"] { font-size:2rem !important; }
  /* Reference table does not try to horizontally scroll a tiny table */
  #sec-pricing table.comparison-table { min-width:0; }
  #trusted-logos { gap:12px !important; }
  #trusted-logos img { height:24px !important; }
+ /* Give CTA buttons in the hero a bit more breathing room on a phone */
+ #sec-hero .btn { padding:14px 22px; }
+ /* Result stat icon SVGs shrink to stay visually balanced */
+ .stat-box svg[width="80"] { width:64px; height:64px; }
+ /* Grid-3 inside the ArcaneOps four card grid (set inline to 2 cols) - already forced to 1fr above, but tighten the grid itself */
+ .feature-item { padding:14px 0; gap:14px; }
 }
 </style>
 </head>
@@ -1186,7 +1164,7 @@ const trustedLogos = [
  <div class="grid-3 reveal" id="statsGrid">
  <div class="stat-box stat-glow">
  <div class="progress-ring-container">
- <svg class="progress-ring" width="160" height="160" viewBox="0 0 160 160">
+ <svg class="progress-ring" viewBox="0 0 160 160" preserveAspectRatio="xMidYMid meet">
  <circle class="progress-ring-bg" cx="80" cy="80" r="70"/>
  <circle class="progress-ring-fill" id="uptimeRing" cx="80" cy="80" r="70"/>
  </svg>
